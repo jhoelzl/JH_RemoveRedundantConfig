@@ -1,0 +1,17 @@
+{	
+	"version": "1.0",
+    "name": "jh/removeredundantconfig",
+    "license": "GPLv3",
+    "type": "magento-module",
+    "description": "Finds redundant entries in mysql table core_config_data",
+    "homepage": "https://github.com/jhoelzl/JH_RemoveRedundantConfig",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors":[
+        {
+            "name":"Josef Hoelzl",
+            "email":"hoelzl.josef@gmail.com"
+        }
+    ]
+}
