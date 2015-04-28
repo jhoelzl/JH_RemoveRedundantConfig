@@ -4,7 +4,7 @@ Magento Module that finds redundant entries in mysql table core_config_data.
 
 If you have different config settings for default, website or store scope in Magento backend, maybe after some time you will end up in having obsolete and redundant settings for website and store scope that have the same value as the default scope. This module finds the duplicate entries and adds the ability to remove them.
 
-If you are checking the settings in Table core_config_data through an external monitoring module, this module could be useful to improve data quality.
+This module could be useful to improve data quality in table core_config_data when you are monitoring your Magento instances (test, dev, production) through an external tool.
 
 ## Installation
 * Install the extension via GitHub, composer, modman or a similar method.
