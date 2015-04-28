@@ -12,12 +12,12 @@ This module could be useful to improve data quality in table core_config_data wh
 * Enable/Disable automatic deletion of obsolete settings under System > Configuration > Developer > JH_RemoveRedundantConfig Settings.
 
 ## Usage
-* First, test which entries are obsolete with the php script under shell directory:
+* First, test which entries are obsolete with the php script under shell directory in your magento directory:
 ```
  cd shell 
  php redundant_settings.php --action findSettings
 ```
-The command lists all paths and config_ids which are redundant. If the output is correct, you can enable the cronjob (runs once per hour) under System -> Configuration > Developer > JH_RemoveRedundantConfig Settings or run the command
+The command lists all paths and config_ids which are redundant. If the output is correct, you can enable the cronjob (runs once per hour) under System -> Configuration > Developer > JH_RemoveRedundantConfig Settings or run the command:
 ```
  cd shell 
  php redundant_settings.php --action removeSettings
