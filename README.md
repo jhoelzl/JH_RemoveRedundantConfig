@@ -25,7 +25,7 @@ The command lists all paths and config_ids which are redundant. If the output is
 In the log file var/log/removed_obsolete_config_ids.log, you can find all ids that are removed by the module.
 
 ## Improvements 
-Currently, this modules uses direct SQL queries for the table core_config_data which should be replaced by Magento collections.
+Feel free to make a pull request when you have ideas for improving.
 
 ## Uninstallation
  
