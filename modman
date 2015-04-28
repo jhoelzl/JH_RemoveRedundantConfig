@@ -1,0 +1,6 @@
+shell/redundant_settings.php  shell/redundant_settings.php
+app/code/community/JH/RemoveRedundantConfig/Model/Observer.php  app/code/community/JH/RemoveRedundantConfig/Model/Observer.php
+app/code/community/JH/RemoveRedundantConfig/Helper/Data.php  app/code/community/JH/RemoveRedundantConfig/Helper/Data.php
+app/code/community/JH/RemoveRedundantConfig/etc/system.xml  app/code/community/JH/RemoveRedundantConfig/etc/system.xml
+app/code/community/JH/RemoveRedundantConfig/etc/config.xml  app/code/community/JH/RemoveRedundantConfig/etc/config.xml
+app/etc/modules/JH_RemoveRedundantConfig.xml  app/etc/modules/JH_RemoveRedundantConfig.xml

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<JH_RemoveRedundantConfig>
+			<version>0.0.9</version>
+		</JH_RemoveRedundantConfig>
+	</modules>
+
+	<global>
+		<helpers>
+			<jh_removeredundantconfig>
+				<class>JH_RemoveRedundantConfig_Helper</class>
+			</jh_removeredundantconfig>
+		</helpers>
+		<models>
+			<jh_removeredundantconfig>
+				<class>JH_RemoveRedundantConfig_Model</class>
+			</jh_removeredundantconfig>
+		</models>
+	</global>
+
+	<crontab>
+		<jobs>
+			<jh_removeredundantconfig>
+				<schedule><cron_expr>10 * * * *</cron_expr></schedule>
+				<run><model>jh_removeredundantconfig/observer::removeSettingsCron</model></run>
+			</jh_removeredundantconfig>
+		</jobs>
+	</crontab>
+</config>
