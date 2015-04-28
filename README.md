@@ -30,5 +30,6 @@ Currently, this modules uses direct SQL queries for the table core_config_data w
 ## Uninstallation
  
  * Remove all extension files from your Magento installation
+ * Optional: Remove entry with path "dev/jh_removeredundantconfig/status" from table core_config_data
 
 
