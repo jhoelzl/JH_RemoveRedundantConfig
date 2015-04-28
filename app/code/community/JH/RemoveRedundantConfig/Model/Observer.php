@@ -35,55 +35,86 @@ class JH_RemoveRedundantConfig_Model_Observer {
 		$readConnection = $resource->getConnection('core_read');
 		$tablename = $resource->getTableName('core/config_data');
 		
-		$query = 'SELECT * FROM ' . $resource->getTableName('core/config_data'). ' group by path,value having count(*) >= 2 order by path,value' ;	
-		$results = $readConnection->fetchAll($query);
+		$settings = Mage::getSingleton('core/config_data')->getCollection();
+		$settings->getSelect()->group(array('path','value'));
+		$settings->getSelect()->having('count(*) >= 2');
+		$settings->getSelect()->order('path','value');
 		
 		$obsolete_ids = array();
-		foreach ($results as $entry){
+		
+		foreach($settings as $p) {
 			
 				// Check if path with same value exists in other scopes		
 				
-				if ($entry['scope'] == 'default'){					
-					//	Default and Website Scope													
-					$results_check = $readConnection->fetchAll("SELECT config_id, scope FROM " . $tablename. " where scope =  'websites' and path =  '".$entry['path']. "'  and value = '". $entry['value'] ."' ");		
-					foreach ($results_check as $entry_check){
-						echo $entry_check['scope'] ." - " .$entry['path']. " - ". $entry['value'] ."\n";
-						$obsolete_ids[] = $entry_check['config_id'];
-					}
-								
-										
-					//	Default and Store Scope											
-					$results_check = $readConnection->fetchAll("SELECT config_id,scope FROM " . $tablename. " where scope = 'stores' and path =  '".$entry['path']. "' and value = '". $entry['value'] ."' ");					
-					foreach ($results_check as $entry_check){
-						$count = "SELECT COUNT(*) as count FROM " . $tablename. " where scope = 'websites' and path =  '".$entry['path']. "' and value != '". $entry['value'] ."'  ";
-						if ($readConnection->fetchOne($count) == false) {
-						echo $entry_check['scope'] ." - " .$entry['path']. " - ". $entry['value'] ."\n";
-						$obsolete_ids[] = $entry_check['config_id'];
+				if ($p->getScope() == 'default'){	
+				
+					//	Default and Website Scope			
+						$settings_check = Mage::getSingleton('core/config_data')->getCollection()
+						->addFieldToFilter('scope', 'websites')
+						->addFieldToFilter('path', $p->getPath())
+						->addFieldToFilter('value', $p->getValue());
+						$settings_check->getSelect();
+						
+						foreach($settings_check as $s) {
+							echo $s->getScope() ." - " .$p->getPath(). " - ". $p->getValue() ."\n";
+							$obsolete_ids[] = $s->getId();						
 						}
-					}						
+							
+					//	Default and Store Scope	
+						$settings_check = Mage::getSingleton('core/config_data')->getCollection()
+						->addFieldToFilter('scope', 'stores')
+						->addFieldToFilter('path', $p->getPath())
+						->addFieldToFilter('value', $p->getValue());
+						$settings_check->getSelect();
+						
+						foreach($settings_check as $s) {
+							
+							// Check if website scopes exists with another value
+							$settings_check2 = Mage::getSingleton('core/config_data')->getCollection()
+							->addFieldToFilter('scope', 'websites')
+							->addFieldToFilter('path', $p->getPath())
+							->addFieldToFilter('value', array('neq' => $p->getValue()) );
+							
+							if ($settings_check2->count() == 0) {								
+								echo $s->getScope() ." - " .$p->getPath(). " - ". $p->getValue() ."\n";
+								$obsolete_ids[] = $s->getId();
+							}							
+						}									
 				}
 				
 				
-				if ($entry['scope'] == 'websites'){					
-					//	Website and Store Scope											
-					$results_check = $readConnection->fetchAll("SELECT config_id,scope FROM " . $tablename. " where scope = 'stores' and path =  '".$entry['path']. "' and value = '". $entry['value'] ."' ");					
-					foreach ($results_check as $entry_check){
-						echo $entry_check['scope'] ." - " .$entry['path']. " - ". $entry['value'] ."\n";
-						$obsolete_ids[] = $entry_check['config_id'];
-					}	
+				if ($p->getScope() == 'websites'){				
+				
+					//	Website and Store Scope		
+					$settings_check = Mage::getSingleton('core/config_data')->getCollection()
+						->addFieldToFilter('scope', 'stores')
+						->addFieldToFilter('path', $p->getPath())
+						->addFieldToFilter('value', $p->getValue());
+						$settings_check->getSelect();
+						
+						foreach($settings_check as $s) {
+							echo $s->getScope() ." - " .$p->getPath(). " - ". $p->getValue() ."\n";
+							$obsolete_ids[] = $s->getId();						
+						}
 				}
 				
-				if ($entry['scope'] == 'stores'){					
-					//	Website and Store Scope											
-					$results_check = $readConnection->fetchAll("SELECT config_id,scope FROM " . $tablename. " where scope = 'websites' and path =  '".$entry['path']. "' and value = '". $entry['value'] ."' ");					
-					foreach ($results_check as $entry_check){
-						echo $entry_check['scope'] ." - " .$entry['path']. " - ". $entry['value'] ."\n";
-						$obsolete_ids[] = $entry_check['config_id'];
-					}	
+				if ($p->getScope() == 'stores'){
+					
+					//	Website and Store Scope		
+					$settings_check = Mage::getSingleton('core/config_data')->getCollection()
+						->addFieldToFilter('scope', 'websites')
+						->addFieldToFilter('path', $p->getPath())
+						->addFieldToFilter('value', $p->getValue());
+						$settings_check->getSelect();
+						
+						foreach($settings_check as $s) {
+							echo $s->getScope() ." - " .$p->getPath(). " - ". $p->getValue() ."\n";
+							$obsolete_ids[] = $s->getId();						
+						}
 				}					
 		}
 		
-	//$settings = Mage::getModel('core/config_data')->getCollection();		
+	
 	return $obsolete_ids;
 
     }
