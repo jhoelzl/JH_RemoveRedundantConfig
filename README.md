@@ -29,7 +29,9 @@ Feel free to make a pull request when you have ideas for improving.
 
 ## Uninstallation
  
- * Remove all extension files from your Magento installation
+ * Fia FTP: Remove all extension files from your Magento installation
+ * Via modman: `modman remove JH_RemoveRedundantConfig`
+ * Via composer, remove the line of your composer.json related to `jh_removeredundantconfig`
  * Optional: Remove entry with path "dev/jh_removeredundantconfig/status" from table core_config_data
 
 
