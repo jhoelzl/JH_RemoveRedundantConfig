@@ -2,9 +2,9 @@
 Magento Module that finds redundant entries in mysql table core_config_data.
 
 
-If you have different config settings for default, website or store scope in Magento backend, maybe after some time you will end up in having obsolete and redundant settings for website and store scope that have the same value as the default scope. This module finds the duplicate entries and adds the ability to remove them.
+If you have different config settings for default, website or store scope in Magento backend, maybe after some time you will end up in having obsolete and redundant settings for website and store scope that have the same value as the default scope. This module finds the duplicate entries and adds the ability to remove them through a cronjob or a script.
 
-This module could be useful to improve data quality in table core_config_data when you are monitoring your Magento instances (test, dev, production) through an external tool.
+This module could be useful to improve data quality in table core_config_data when you are monitoring your Magento instances (test, dev, prod) through an external tool.
 
 ## Installation
 * Install the extension via GitHub, composer, modman or a similar method.
@@ -22,10 +22,10 @@ The command lists all paths and config_ids which are redundant. If the output is
  cd shell 
  php redundant_settings.php --action removeSettings
 ```
-In the log file var/log/removed_obsolete_config_ids.log, you can find all ids that are removed by the module.
+In the log file var/log/removed_obsolete_config_ids.log, you can find all config_id values that were removed by the module.
 
 ## Improvements 
-Feel free to make a pull request when you have ideas for improving.
+Feel free to make a pull request when you have ideas for improving. Further improvement could be an extended log file were the whole entry that was removed is stored, not only the config_id.
 
 ## Uninstallation
  
