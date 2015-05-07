@@ -3,4 +3,5 @@ app/code/community/JH/RemoveRedundantConfig/Model/Observer.php  app/code/communi
 app/code/community/JH/RemoveRedundantConfig/Helper/Data.php  app/code/community/JH/RemoveRedundantConfig/Helper/Data.php
 app/code/community/JH/RemoveRedundantConfig/etc/system.xml  app/code/community/JH/RemoveRedundantConfig/etc/system.xml
 app/code/community/JH/RemoveRedundantConfig/etc/config.xml  app/code/community/JH/RemoveRedundantConfig/etc/config.xml
+app/code/community/JH/RemoveRedundantConfig/Test/Config/ActivationXml.php  app/code/community/JH/RemoveRedundantConfig/Test/Config/ActivationXml.php
 app/etc/modules/JH_RemoveRedundantConfig.xml  app/etc/modules/JH_RemoveRedundantConfig.xml
