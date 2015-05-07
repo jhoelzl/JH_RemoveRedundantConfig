@@ -30,7 +30,7 @@
 	<phpunit>
 		<suite>
 			<modules>
-				<JH_Test />
+				<JH_RemoveRedundantConfig />
 			</modules>
 		</suite>
 	</phpunit>
