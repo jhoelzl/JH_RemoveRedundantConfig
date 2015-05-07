@@ -27,4 +27,11 @@
 			</jh_removeredundantconfig>
 		</jobs>
 	</crontab>
+	<phpunit>
+		<suite>
+			<modules>
+				<JH_Test />
+			</modules>
+		</suite>
+	</phpunit>
 </config>
