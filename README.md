@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jhoelzl/JH_RemoveRedundantConfig.svg?branch=master)](https://travis-ci.org/jhoelzl/JH_RemoveRedundantConfig)
 # JH_RemoveRedundantConfig
 Magento Module that finds redundant entries in mysql table core_config_data.
 
