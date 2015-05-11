@@ -6,15 +6,7 @@ class JH_RemoveRedundantConfig_Test_Model_Observer extends EcomDev_PHPUnit_Test_
      * @test
      */
      
-	public function removeSettingsCron()
-	{
-		$this->assertModuleCodePool('community');	
-	}
-	
-	 /**
-     * @test
-     */
-	public function removeSettings()
+	public function testCodePool()
 	{
 		$this->assertModuleCodePool('community');	
 	}
@@ -23,9 +15,8 @@ class JH_RemoveRedundantConfig_Test_Model_Observer extends EcomDev_PHPUnit_Test_
      * @test
      */
 	public function findSettings()
-	{
-		
-		$this->assertNotNull($obsolete_ids);	
+	{	
+		$this->assertNotNull($this->findSettings());	
 	}
 	
 	
