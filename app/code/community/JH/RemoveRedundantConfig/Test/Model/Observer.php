@@ -5,7 +5,6 @@ class JH_RemoveRedundantConfig_Test_Model_Observer extends EcomDev_PHPUnit_Test_
 	 /**
      * @test
      */
-     
 	public function testCodePool()
 	{
 		$this->assertModuleCodePool('community');	
@@ -16,6 +15,6 @@ class JH_RemoveRedundantConfig_Test_Model_Observer extends EcomDev_PHPUnit_Test_
      */
 	public function testfindSettings()
 	{	
-		$this->assertNotNull($this->Mage::getModel('jh_removeredundantconfig/observer')->findSettings());	
+		$this->assertNotNull(Mage::getModel('jh_removeredundantconfig/observer')->findSettings());	
 	}
 }
