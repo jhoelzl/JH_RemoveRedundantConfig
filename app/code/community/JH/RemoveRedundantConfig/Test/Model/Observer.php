@@ -14,13 +14,8 @@ class JH_RemoveRedundantConfig_Test_Model_Observer extends EcomDev_PHPUnit_Test_
 	 /**
      * @test
      */
-	public function findSettings()
+	public function testfindSettings()
 	{	
 		$this->assertNotNull($this->findSettings());	
 	}
-	
-	
-	
-	
-	
 }
