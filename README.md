@@ -8,7 +8,8 @@ If you have different config settings for default, website or store scope in Mag
 This module could be useful to improve data quality in table core_config_data when you are monitoring your Magento instances (test, dev, prod) through an external tool.
 
 ## Installation
-* Install the extension via GitHub, composer, modman or a similar method.
+* Install the extension via GitHub, [Composer](https://getcomposer.org/), [modman](https://github.com/colinmollenhour/modman) or a similar method. The extension is listed on 
+[packages.firegento.com](http://packages.firegento.com). 
 * Clear the cache, logout from the admin panel and then login again.
 * Enable/Disable automatic deletion of obsolete settings under System > Configuration > Developer > JH_RemoveRedundantConfig Settings.
 
